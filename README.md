@@ -22,63 +22,11 @@
 
 &nbsp;
 
-### <img src="assets/live.svg" width="14" height="14" alt=""> &nbsp;now
+### about
 
-- keeping releases boring at **cicon ltd** — automated regression plus a disciplined manual pass
-- building the frontend base at **[brik.space](https://brik.space)** — one foundation, a finetuned tool a week on top
-- shipping **lemoneyrich** — ai that reads any document, behind one deterministic write gate
+qa engineer and fullstack developer. i find the edge cases specs miss, then automate them so the same bug never ships twice. i build products end to end: react to fastapi, models to data pipelines, typed and tested in production.
 
-&nbsp;
-
-### work
-
-<details>
-<summary>&nbsp;<b>lemoneyrich</b> — ai bookkeeping that can't corrupt your money</summary>
-<br>
-
-> you need ai flexible enough to read any document, but you cannot let a hallucinating model corrupt someone's money.
-
-- every write goes through one deterministic gate — the ai only proposes
-- versioned ledger: nothing is ever destroyed or silently overwritten
-- model confidence blended with real validity checks, so wrong-but-confident fields can't pass
-- offline eval harness that proves the ai is honest, not just plausible
-
-</details>
-
-<details>
-<summary>&nbsp;<b>brad did something</b> — a 9b model running the economy of an office comedy</summary>
-<br>
-
-> classic rpg dialogue trees fake player agency. i wanted the model load-bearing — changing real game state live, not writing flavor text.
-
-- llm drives the economy through schema-validated json the server owns
-- qwen3.5-9b on llama.cpp on a warm modal l4 — replies land in seconds
-- wordless crisis comics rendered with flux.2 klein on a second gpu
-- built for the [hugging face build small hackathon](https://huggingface.co/spaces/build-small-hackathon/brad-did-something)
-
-</details>
-
-<details>
-<summary>&nbsp;<b>qa harness for generative uis</b> — asserting on meaning, not markup</summary>
-<br>
-
-> generative uis change shape at runtime, so traditional brittle selectors break and can't verify them.
-
-- flows driven with resilient, intent-based automation
-- llms assert on meaning, not just markup
-- captured and diffed states to catch regressions — fast enough to run often
-
-</details>
-
-<details>
-<summary>&nbsp;<b>qa at zerve &amp; cicon</b> — green builds, fast suites, zero drama</summary>
-<br>
-
-- owned quality on the zerve canvas — a test nobody trusted turned out to be the only thing standing between a user and a silent data-loss bug
-- built the regression suite covering revenue-critical flows, gated merges on a green run in ci
-- kept a focused manual pass for the things automation can't see
-
-</details>
+currently keeping releases boring at **cicon ltd** and building the frontend base at **[brik.space](https://brik.space)**. i like my ai load-bearing: real state, strict json, one deterministic write path. if it can't be verified, it doesn't ship.
 
 &nbsp;
 
@@ -112,6 +60,6 @@
 
 ### reach me
 
-**[portfolio ↗](https://portfolio-qadence.vercel.app/)** — case studies, certs, and a live image-generation playground
+**[portfolio ↗](https://portfolio-qadence.vercel.app/)** for case studies, certs, and a live image generation playground
 
 <sub>~ releases, made boring.</sub>
