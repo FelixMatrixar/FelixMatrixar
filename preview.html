@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>profile components — preview</title>
+<style>
+  body { margin: 0; font: 14px/1.5 ui-monospace, Consolas, monospace; }
+  .half { padding: 36px 24px; display: flex; flex-direction: column; gap: 18px; align-items: center; }
+  .dark { background: #0d1117; color: #8b849a; }
+  .light { background: #ffffff; color: #6b7480; }
+  img { max-width: 100%; height: auto; display: block; }
+  h2 { font-size: 12px; font-weight: 400; letter-spacing: 2px; margin: 0; }
+</style>
+</head>
+<body>
+  <!-- svgs embedded via <img>, exactly how github's camo serves them -->
+  <section class="half dark">
+    <h2>github dark theme — qa side</h2>
+    <img src="assets/hero-dark.svg" width="880" height="240" alt="hero dark">
+    <img src="assets/pipeline-dark.svg" width="880" height="312" alt="pipeline dark">
+    <img src="assets/ticker-dark.svg" width="880" height="56" alt="ticker dark">
+    <img src="assets/stack-dark.svg" width="880" alt="stack board dark">
+  </section>
+  <section class="half light">
+    <h2>github light theme — dev side</h2>
+    <img src="assets/hero-light.svg" width="880" height="240" alt="hero light">
+    <img src="assets/pipeline-light.svg" width="880" height="312" alt="pipeline light">
+    <img src="assets/ticker-light.svg" width="880" height="56" alt="ticker light">
+    <img src="assets/stack-light.svg" width="880" alt="stack board light">
+  </section>
+</body>
+</html>
