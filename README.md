@@ -16,8 +16,8 @@
 
 <div align="center">
   <a href="https://portfolio-qadence.vercel.app/"><img src="https://img.shields.io/badge/portfolio-qadence-FF6B1A?style=for-the-badge&labelColor=0B0A08&logo=vercel&logoColor=white" alt="portfolio"></a>
-  <a href="mailto:qfelix0112@gmail.com"><img src="https://img.shields.io/badge/gmail-say%20hi-0A84E5?style=for-the-badge&labelColor=0B0A08&logo=gmail&logoColor=white" alt="email"></a>
-  <a href="https://huggingface.co/spaces/build-small-hackathon/brad-did-something"><img src="https://img.shields.io/badge/hf%20space-brad%20did%20something-FFC24B?style=for-the-badge&labelColor=0B0A08&logo=huggingface&logoColor=white" alt="hugging face space"></a>
+  <a href="https://portfolio-qadence.vercel.app/contact"><img src="https://img.shields.io/badge/contact-say%20hi-0A84E5?style=for-the-badge&labelColor=0B0A08" alt="contact"></a>
+  <a href="https://lemoneyrich.com"><img src="https://img.shields.io/badge/lemoneyrich-ai%20bookkeeping-FFC24B?style=for-the-badge&labelColor=0B0A08" alt="lemoneyrich"></a>
 </div>
 
 &nbsp;
