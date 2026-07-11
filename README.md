@@ -99,14 +99,12 @@
 
 ### stats
 
+<!-- self-generated from the github api (scripts/stats.mjs), refreshed weekly
+     by .github/workflows/stats.yml — no third-party card service -->
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=FelixMatrixar&show_icons=true&hide_border=true&border_radius=16&bg_color=0B0A08&title_color=F7F3EC&text_color=BDB6AB&icon_color=FF6B1A&ring_color=FF6B1A">
-    <img src="https://github-readme-stats.vercel.app/api?username=FelixMatrixar&show_icons=true&hide_border=true&border_radius=16&bg_color=E6EAEF&title_color=0C1116&text_color=39424D&icon_color=0A84E5&ring_color=0A84E5" alt="github stats" height="170">
-  </picture>
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=FelixMatrixar&layout=compact&langs_count=8&hide_border=true&border_radius=16&bg_color=0B0A08&title_color=F7F3EC&text_color=BDB6AB">
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=FelixMatrixar&layout=compact&langs_count=8&hide_border=true&border_radius=16&bg_color=E6EAEF&title_color=0C1116&text_color=39424D" alt="most used languages" height="170">
+    <source media="(prefers-color-scheme: dark)" srcset="assets/gh-stats-dark.svg">
+    <img src="assets/gh-stats-light.svg" alt="github stats — stars, commits, pull requests, issues, followers, repos and most used languages" width="880">
   </picture>
 </div>
 

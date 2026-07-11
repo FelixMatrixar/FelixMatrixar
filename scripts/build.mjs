@@ -9,7 +9,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const fonts = JSON.parse(fs.readFileSync(path.join(root, 'fonts', 'fonts-b64.json'), 'utf8'));
@@ -471,19 +471,28 @@ ${REDUCED}
 </svg>`;
 }
 
+// shared with scripts/stats.mjs
+export { themes, fontCss, MONO, DISPLAY, EASE_OUT, EASE_SPRING, REDUCED, adv, esc, check, writeSvgs };
+
 // ---------------------------------------------------------------- emit
 
-const outDir = path.join(root, 'assets');
-fs.mkdirSync(outDir, { recursive: true });
-
-const files = { 'live.svg': live() };
-for (const t of Object.values(themes)) {
-  files[`hero-${t.id}.svg`] = hero(t);
-  // pipeline(t) intentionally not emitted — terminal component retired from the readme
-  files[`ticker-${t.id}.svg`] = ticker(t);
-  files[`stack-${t.id}.svg`] = stack(t);
+function writeSvgs(files) {
+  const outDir = path.join(root, 'assets');
+  fs.mkdirSync(outDir, { recursive: true });
+  for (const [name, svg] of Object.entries(files)) {
+    fs.writeFileSync(path.join(outDir, name), svg.trim() + '\n');
+    console.log(`assets/${name}  ${(fs.statSync(path.join(outDir, name)).size / 1024).toFixed(1)} KB`);
+  }
 }
-for (const [name, svg] of Object.entries(files)) {
-  fs.writeFileSync(path.join(outDir, name), svg.trim() + '\n');
-  console.log(`assets/${name}  ${(fs.statSync(path.join(outDir, name)).size / 1024).toFixed(1)} KB`);
+
+const isMain = process.argv[1] && pathToFileURL(process.argv[1]).href === import.meta.url;
+if (isMain) {
+  const files = { 'live.svg': live() };
+  for (const t of Object.values(themes)) {
+    files[`hero-${t.id}.svg`] = hero(t);
+    // pipeline(t) intentionally not emitted — terminal component retired from the readme
+    files[`ticker-${t.id}.svg`] = ticker(t);
+    files[`stack-${t.id}.svg`] = stack(t);
+  }
+  writeSvgs(files);
 }
