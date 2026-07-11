@@ -51,16 +51,15 @@
 </g>
   <g id="tk-modal" transform="scale(0.7083) translate(0,0)"><g fill="#7FEE64"><title>Modal</title><path d="M4.89 5.57 0 14.002l2.521 4.4h5.05l4.396-7.718 4.512 7.709 4.996.037L24 14.057l-4.857-8.452-5.073-.015-2.076 3.598L9.94 5.57Zm.837.729h3.787l1.845 3.252H7.572Zm9.189.021 3.803.012 4.228 7.355-3.736-.027zm-9.82.346L6.94 9.914l-4.209 7.389-1.892-3.3Zm9.187.014 4.297 7.343-1.892 3.282-4.3-7.344zm-6.713 3.6h3.79l-4.212 7.394H3.361Zm11.64 4.109 3.74.027-1.893 3.281-3.74-.027z"/></g></g>
   <g id="tk-vercel" transform="scale(0.0664) translate(0,0)"><path fill="#F7F3EC" d="m128 0 128 221.705H0z"/></g>
-  <clipPath id="frame"><rect width="880" height="56" rx="14"/></clipPath>
-  <linearGradient id="fadeL" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0" stop-color="#0B0A08"/><stop offset="1" stop-color="#0B0A08" stop-opacity="0"/>
+  <linearGradient id="edgeG" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+    <stop offset=".08" stop-color="#fff"/>
+    <stop offset=".92" stop-color="#fff"/>
+    <stop offset="1" stop-color="#fff" stop-opacity="0"/>
   </linearGradient>
-  <linearGradient id="fadeR" x1="1" y1="0" x2="0" y2="0">
-    <stop offset="0" stop-color="#0B0A08"/><stop offset="1" stop-color="#0B0A08" stop-opacity="0"/>
-  </linearGradient>
+  <mask id="edge"><rect width="880" height="56" fill="url(#edgeG)"/></mask>
 </defs>
-<g clip-path="url(#frame)">
-  <rect width="880" height="56" fill="#0B0A08"/>
+<g mask="url(#edge)">
   <g transform="translate(24,0)">
     <g class="scroll">
     <g transform="translate(0.0,0)">
@@ -204,8 +203,5 @@
       <text x="28.0" y="32.5" class="mono" font-size="12.5" fill="#BDB6AB">llm evals</text>
     </g></g></g>
   </g>
-  <rect width="70" height="56" fill="url(#fadeL)"/>
-  <rect x="810" width="70" height="56" fill="url(#fadeR)"/>
 </g>
-<rect x=".5" y=".5" width="879" height="55" rx="13.5" fill="none" stroke="rgba(247,243,236,0.13)"/>
 </svg>

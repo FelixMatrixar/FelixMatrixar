@@ -15,10 +15,9 @@
 </div>
 
 <div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/pipeline-dark.svg">
-    <img src="assets/pipeline-light.svg" alt="ci release gate — type check, playwright e2e, docker build, deploy: all green. releases, made boring." width="880">
-  </picture>
+  <a href="https://portfolio-qadence.vercel.app/"><img src="https://img.shields.io/badge/portfolio-qadence-FF6B1A?style=for-the-badge&labelColor=0B0A08&logo=vercel&logoColor=white" alt="portfolio"></a>
+  <a href="mailto:qfelix0112@gmail.com"><img src="https://img.shields.io/badge/gmail-say%20hi-0A84E5?style=for-the-badge&labelColor=0B0A08&logo=gmail&logoColor=white" alt="email"></a>
+  <a href="https://huggingface.co/spaces/build-small-hackathon/brad-did-something"><img src="https://img.shields.io/badge/hf%20space-brad%20did%20something-FFC24B?style=for-the-badge&labelColor=0B0A08&logo=huggingface&logoColor=white" alt="hugging face space"></a>
 </div>
 
 &nbsp;

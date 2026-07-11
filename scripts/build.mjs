@@ -71,32 +71,23 @@ const zap = (x, y, s, cls = '') =>
 
 // ---------------------------------------------------------------- hero
 
+// transparent, centered — floats on github's own background
 function hero(t) {
-  const W = 880, H = 240;
+  const W = 880, H = 186;
   const [roleA, roleB] = t.roles;
   const roleSize = 15, roleAdv = adv(roleSize);
-  const roleX = 88;
-  const curA = roleX + roleA.length * roleAdv + 8;
-  const curB = roleX + roleB.length * roleAdv + 8;
+  const mid = W / 2;
 
-  // right-hand status chips — the portfolio's playground labels
-  const chips = ['ci deploy', 'type check', 'model infer'];
-  const chipW = 190, chipH = 36, chipX = W - 44 - chipW;
-
-  const chipEls = chips.map((label, i) => {
-    const y = 50 + i * 48;
+  const role = (cls, text) => {
+    const w = text.length * roleAdv;
+    const x0 = mid - w / 2;
     return `
-  <g>
-    <rect x="${chipX}" y="${y}" width="${chipW}" height="${chipH}" rx="9" fill="${t.bg1}" stroke="${t.line2}"/>
-    <circle class="dot d${i}" cx="${chipX + 20}" cy="${y + chipH / 2}" r="3" fill="${t.pass}"/>
-    <circle class="ring d${i}" cx="${chipX + 20}" cy="${y + chipH / 2}" r="3" fill="none" stroke="${t.pass}" opacity="0"/>
-    <text x="${chipX + 36}" y="${y + 22.5}" class="mono" font-size="12.5" fill="${t.fg2}">${label}</text>
-    ${check(chipX + chipW - 26, y + 14.5, t.pass, `pop p${i}`)}
-  </g>`;
-  }).join('');
-
-  const passLine = 'deployed · zero downtime · green';
-  const passW = passLine.length * adv(11.5);
+<g class="${cls}">
+  <text x="${(x0 - 18).toFixed(1)}" y="158" class="mono" font-size="${roleSize}" font-weight="600" fill="${t.brand}">&gt;</text>
+  <text x="${x0.toFixed(1)}" y="158" class="mono" font-size="${roleSize}" fill="${t.fg2}">${text}</text>
+  <rect class="cursor" x="${(mid + w / 2 + 8).toFixed(1)}" y="145" width="8" height="16" fill="${t.brand}"/>
+</g>`;
+  };
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="felix — software qa engineer and fullstack developer">
 <style>
@@ -113,55 +104,14 @@ ${fontCss('mono400', 'mono600', 'display')}
 @keyframes zapflash{0%,88%{fill:${t.fg3};transform:rotate(0deg) scale(1)}94%{fill:${t.brand};transform:rotate(-14deg) scale(1.25)}100%{fill:${t.fg3};transform:rotate(0deg) scale(1)}}
 .under{animation:under 10s ${EASE_OUT} infinite}
 @keyframes under{0%{width:0}8%,100%{width:132px}}
-.ring{animation:ring 3.2s ${EASE_OUT} infinite}
-.ring.d1{animation-delay:1.05s}.ring.d2{animation-delay:2.1s}
-@keyframes ring{0%{r:3;opacity:.8}55%{r:9;opacity:0}100%{r:9;opacity:0}}
-.pop{animation:pop 3.2s ${EASE_SPRING} infinite}
-.pop.p1{animation-delay:1.05s}.pop.p2{animation-delay:2.1s}
-@keyframes pop{0%{transform:scale(1)}6%{transform:scale(1.35)}14%,100%{transform:scale(1)}}
-.drift{animation:drift 14s ease-in-out infinite alternate}
-@keyframes drift{from{transform:translateX(-30px)}to{transform:translateX(50px)}}
 ${REDUCED}
 </style>
-<defs>
-  <clipPath id="frame"><rect width="${W}" height="${H}" rx="16"/></clipPath>
-  <pattern id="grid" width="22" height="22" patternUnits="userSpaceOnUse">
-    <circle cx="1" cy="1" r="1" fill="${t.line1}"/>
-  </pattern>
-  <radialGradient id="halo" cx="50%" cy="50%" r="50%">
-    <stop offset="0%" stop-color="${t.brand}" stop-opacity=".09"/>
-    <stop offset="100%" stop-color="${t.brand}" stop-opacity="0"/>
-  </radialGradient>
-</defs>
-<g clip-path="url(#frame)">
-  <rect width="${W}" height="${H}" fill="${t.bg0}"/>
-  <rect width="${W}" height="${H}" fill="url(#grid)"/>
-  <g class="drift"><ellipse cx="300" cy="40" rx="340" ry="150" fill="url(#halo)"/></g>
-</g>
-<rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="15.5" fill="none" stroke="${t.line2}"/>
-
-<text x="44" y="56" class="mono" font-size="12" letter-spacing="2" fill="${t.fg3}">hi, i'm</text>
-<text x="42" y="116" class="disp" font-size="60" font-weight="700" fill="${t.fg1}">felix</text>
-<rect class="under" x="44" y="130" width="132" height="4" rx="2" fill="${t.brand}"/>
-
-${zap(44, 160, 0.62, 'zap')}
-<text x="72" y="172" class="mono" font-size="${roleSize}" font-weight="600" fill="${t.brand}">&gt;</text>
-<g class="roleA">
-  <text x="${roleX}" y="172" class="mono" font-size="${roleSize}" fill="${t.fg2}">${roleA}</text>
-  <rect class="cursor" x="${curA}" y="159" width="8" height="16" fill="${t.brand}"/>
-</g>
-<g class="roleB">
-  <text x="${roleX}" y="172" class="mono" font-size="${roleSize}" fill="${t.fg2}">${roleB}</text>
-  <rect class="cursor" x="${curB}" y="159" width="8" height="16" fill="${t.brand}"/>
-</g>
-${chipEls}
-
-<line x1="44" y1="196" x2="${W - 44}" y2="196" stroke="${t.line1}"/>
-<text x="44" y="220" class="mono" font-size="11.5" fill="${t.fg4}">currently at cicon ltd</text>
-<g opacity=".9">
-  ${check(W - 44 - passW - 18, 210, t.pass)}
-  <text x="${W - 44 - passW}" y="220" class="mono" font-size="11.5" fill="${t.pass}">${passLine}</text>
-</g>
+<text x="${mid}" y="44" text-anchor="middle" class="mono" font-size="12" letter-spacing="2" fill="${t.fg3}">hi, i'm</text>
+<text x="${mid}" y="106" text-anchor="middle" class="disp" font-size="60" font-weight="700" fill="${t.fg1}">felix</text>
+<rect class="under" x="${mid - 66}" y="120" width="132" height="4" rx="2" fill="${t.brand}"/>
+${zap(mid - 136, 146, 0.62, 'zap')}
+${role('roleA', roleA)}
+${role('roleB', roleB)}
 </svg>`;
 }
 
@@ -386,23 +336,19 @@ ${REDUCED}
 </style>
 <defs>
   ${defs.join('\n  ')}
-  <clipPath id="frame"><rect width="${W}" height="${H}" rx="14"/></clipPath>
-  <linearGradient id="fadeL" x1="0" y1="0" x2="1" y2="0">
-    <stop offset="0" stop-color="${t.bg0}"/><stop offset="1" stop-color="${t.bg0}" stop-opacity="0"/>
+  <linearGradient id="edgeG" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+    <stop offset=".08" stop-color="#fff"/>
+    <stop offset=".92" stop-color="#fff"/>
+    <stop offset="1" stop-color="#fff" stop-opacity="0"/>
   </linearGradient>
-  <linearGradient id="fadeR" x1="1" y1="0" x2="0" y2="0">
-    <stop offset="0" stop-color="${t.bg0}"/><stop offset="1" stop-color="${t.bg0}" stop-opacity="0"/>
-  </linearGradient>
+  <mask id="edge"><rect width="${W}" height="${H}" fill="url(#edgeG)"/></mask>
 </defs>
-<g clip-path="url(#frame)">
-  <rect width="${W}" height="${H}" fill="${t.bg0}"/>
+<g mask="url(#edge)">
   <g transform="translate(24,0)">
     <g class="scroll">${one}<g transform="translate(${total.toFixed(1)},0)">${one}</g></g>
   </g>
-  <rect width="70" height="${H}" fill="url(#fadeL)"/>
-  <rect x="${W - 70}" width="70" height="${H}" fill="url(#fadeR)"/>
 </g>
-<rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="13.5" fill="none" stroke="${t.line2}"/>
 </svg>`;
 }
 
@@ -506,17 +452,6 @@ ${stagger}
 @keyframes enter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 ${REDUCED}
 </style>
-<defs>
-  <clipPath id="frame"><rect width="${W}" height="${H}" rx="16"/></clipPath>
-  <pattern id="grid" width="22" height="22" patternUnits="userSpaceOnUse">
-    <circle cx="1" cy="1" r="1" fill="${t.line1}"/>
-  </pattern>
-</defs>
-<g clip-path="url(#frame)">
-  <rect width="${W}" height="${H}" fill="${t.bg0}"/>
-  <rect width="${W}" height="${H}" fill="url(#grid)"/>
-</g>
-<rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="15.5" fill="none" stroke="${t.line2}"/>
 ${blocks}
 </svg>`;
 }
@@ -544,7 +479,7 @@ fs.mkdirSync(outDir, { recursive: true });
 const files = { 'live.svg': live() };
 for (const t of Object.values(themes)) {
   files[`hero-${t.id}.svg`] = hero(t);
-  files[`pipeline-${t.id}.svg`] = pipeline(t);
+  // pipeline(t) intentionally not emitted — terminal component retired from the readme
   files[`ticker-${t.id}.svg`] = ticker(t);
   files[`stack-${t.id}.svg`] = stack(t);
 }
