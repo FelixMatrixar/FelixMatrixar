@@ -237,6 +237,8 @@ function loadLogo(slug, t) {
     .replace(/<!--[\s\S]*?-->/g, '')
     .trim();
   const viewBox = svg.match(/viewBox="([^"]+)"/)[1].split(/\s+/).map(Number);
+  // normalize legacy xlink:href (its xmlns lives on the logo's stripped root tag)
+  svg = svg.replace(/xlink:href=/g, 'href=');
   // namespace ids and class names so logos can't collide with each other
   // or with the component's own styles
   svg = svg
@@ -249,6 +251,9 @@ function loadLogo(slug, t) {
   // white-only / currentColor marks need per-theme (or true brand) colors
   if (slug === 'flask') svg = svg.replace(/fill="#ffffff"/gi, `fill="${t.fg1}"`);
   if (slug === 'mysql') svg = svg.replace(/fill="#FFF"/gi, 'fill="#00758F"');
+  if (slug === 'r') svg = svg.replace(/fill="#fff"/gi, 'fill="#276DC3"');
+  if (slug === 'php') svg = svg.replace(/fill="#fff"/gi, 'fill="#777BB4"');
+  if (slug === 'bash') svg = svg.replace(/fill="#fff"/gi, 'fill="#4EAA25"');
   if (slug === 'tensorflow') svg = svg.replace(/fill:\s*#fff\b/gi, 'fill:#FF6F00');
   if (slug === 'aws') svg = svg.replace(/fill="currentColor"/g, `fill="${t.id === 'dark' ? t.fg1 : '#232F3E'}"`);
   if (slug === 'vercel') svg = svg.replace(/fill="#fff"/g, `fill="${t.fg1}"`);
@@ -357,18 +362,18 @@ ${REDUCED}
 // full categorized stack — every category from the portfolio's about section.
 // chips with a slug get the real logo; concept items get a brand-dot text chip.
 const STACK = [
-  { h: 'languages', items: [
-    { slug: 'typescript', label: 'typescript' }, { slug: 'javascript', label: 'javascript' },
-    { slug: 'python', label: 'python' }, { slug: 'linux', label: 'linux' }] },
-  { h: 'backend frameworks', items: [
-    { slug: 'fastapi', label: 'fastapi' }, { slug: 'flask', label: 'flask' },
-    { slug: 'django', label: 'django' }, { slug: 'nestjs', label: 'nestjs' }] },
+  { h: 'spoken languages', items: [
+    { label: 'indonesian (native)' }, { label: 'english (fluent)' }, { label: 'mandarin (basic)' }] },
+  { h: 'backend', items: [
+    { slug: 'dotnet', label: '.net' }, { slug: 'fastapi', label: 'fastapi' }, { slug: 'flask', label: 'flask' },
+    { slug: 'django', label: 'django' }, { slug: 'nestjs', label: 'nestjs' }, { slug: 'nodejs', label: 'nodejs' },
+    { label: 'rshiny' }, { slug: 'laravel', label: 'laravel' }] },
   { h: 'databases', items: [
     { slug: 'postgresql', label: 'postgresql' }, { slug: 'supabase', label: 'supabase' },
     { slug: 'mysql', label: 'mysql' }, { slug: 'sqlite', label: 'sqlite' },
-    { slug: 'mongodb', label: 'mongodb' }, { slug: 'firebase', label: 'firebase / firestore' },
+    { slug: 'mongodb', label: 'mongodb' }, { slug: 'firebase', label: 'firebase' },
     { slug: 'redis', label: 'redis' }] },
-  { h: 'frontend & ui', items: [
+  { h: 'frontend & ui/ux', items: [
     { slug: 'react', label: 'react' }, { label: 'react flow' }, { slug: 'nextjs', label: 'next.js' },
     { slug: 'vite', label: 'vite' }, { slug: 'tailwindcss', label: 'tailwind css' }, { label: 'zustand' }] },
   { h: 'protocols', items: [
@@ -377,8 +382,20 @@ const STACK = [
   { h: 'architecture & patterns', items: [
     { label: 'mvc / mvt' }, { label: 'dependency injection' }, { label: 'repository pattern' },
     { label: 'event-driven' }, { label: 'rate limiting' }, { label: 'caching strategies' },
-    { label: 'serverless / faas' }] },
-  { h: 'event streaming', items: [{ slug: 'apache-kafka', label: 'apache kafka' }] },
+    { label: 'serverless / faas' }, { slug: 'apache-kafka', label: 'apache kafka' }] },
+  { h: 'programming languages', items: [
+    { slug: 'csharp', label: 'c#' }, { slug: 'python', label: 'python' },
+    { slug: 'typescript', label: 'typescript' }, { slug: 'javascript', label: 'javascript' },
+    { slug: 'r', label: 'r' }, { slug: 'php', label: 'php' }, { slug: 'bash', label: 'bash' }] },
+  { h: 'cloud & devops', items: [
+    { slug: 'linux', label: 'linux' }, { slug: 'ubuntu', label: 'ubuntu' },
+    { slug: 'docker', label: 'docker' }, { slug: 'kubernetes', label: 'kubernetes' },
+    { slug: 'git', label: 'git' }, { slug: 'github-actions', label: 'github actions' },
+    { slug: 'google-cloud', label: 'gcp' }, { slug: 'aws', label: 'aws' },
+    { slug: 'huawei', label: 'huawei cloud' }] },
+  { h: 'testing', items: [
+    { slug: 'playwright', label: 'playwright' }, { slug: 'selenium', label: 'selenium' },
+    { slug: 'burp-suite', label: 'burp suite' }, { slug: 'owasp', label: 'owasp zap' }] },
   { h: 'ai & machine learning', items: [
     { slug: 'pytorch', label: 'pytorch' }, { slug: 'tensorflow', label: 'tensorflow' },
     { slug: 'onnx', label: 'onnx' }, { slug: 'langchain', label: 'langchain' },
@@ -388,13 +405,6 @@ const STACK = [
     { label: 'statistical modelling' }] },
   { h: 'web scraping', items: [
     { slug: 'selenium', label: 'undetected chromedriver' }, { label: 'proxy networks' }] },
-  { h: 'security testing', items: [
-    { slug: 'burp-suite', label: 'burp suite' }, { slug: 'owasp', label: 'owasp zap' }] },
-  { h: 'cloud & devops', items: [
-    { slug: 'docker', label: 'docker' }, { slug: 'kubernetes', label: 'kubernetes' },
-    { slug: 'git', label: 'git' }, { slug: 'github-actions', label: 'github actions' },
-    { slug: 'google-cloud', label: 'gcp' }, { slug: 'aws', label: 'aws' },
-    { slug: 'huawei', label: 'huawei cloud' }] },
 ];
 
 function stack(t) {
